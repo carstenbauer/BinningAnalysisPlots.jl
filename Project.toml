@@ -1,0 +1,4 @@
+name = "BinningAnalysisPlots"
+uuid = "a92a6900-b2e3-11e9-1290-a9374ec89554"
+authors = ["Carsten Bauer <crstnbr@gmail.com>"]
+version = "0.1.0"
