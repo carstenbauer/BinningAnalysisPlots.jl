@@ -2,7 +2,10 @@
 
 Plotting recipes for BinningAnalysis.jl
 
-Exports for `FullBinner`: `plot, histogram, binning, corrplot`
+Supported series types
+
+* `FullBinner`: `plot, histogram, binning, corrplot`
+* `LogBinner`: `binning, corrplot`
 
 ## Examples
 
