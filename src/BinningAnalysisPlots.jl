@@ -1,5 +1,7 @@
 module BinningAnalysisPlots
 
-greet() = print("Hello World!")
+using BinningAnalysis, RecipesBase
+
+include("recipes.jl")
 
 end # module
