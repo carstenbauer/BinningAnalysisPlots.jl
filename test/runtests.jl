@@ -17,3 +17,10 @@ savefig(joinpath(@__DIR__, "binning.png"))
 
 corrplot(x)
 savefig(joinpath(@__DIR__, "corrplot.png"))
+
+
+x = LogBinner(randn(100_000))
+
+binning(x)
+
+corrplot(x)
