@@ -1,6 +1,6 @@
 @recipe function f(l::FullBinner{T}) where T<:Number
     framestyle --> :grid
-    legend --> true
+    size --> (750, 500)
     plottype = get(plotattributes, :seriestype, :plot)
 
     if plottype == :histogram
@@ -8,10 +8,10 @@
             color --> :lightblue
             alpha --> 0.6
             label --> ""
+            legend --> true
             l.x
         end
     elseif plottype == :binning
-        # bss, R, means = BinningAnalysis.R_function(l.x)
         bss, errors, error_means = BinningAnalysis.all_binning_errors(l)
         @series begin
             label --> "standard error"
@@ -20,6 +20,7 @@
             markercolor --> :lightgreen
             markersize --> 2
             color --> :lightgreen
+            legend --> true
             bss, errors
         end
 
@@ -31,7 +32,22 @@
             markercolor --> :green
             markersize --> 2
             color --> :green
+            legend --> true
             bss, error_means
+        end
+    elseif plottype == :corrplot
+        @series begin
+            bss, errors, error_means = BinningAnalysis.all_binning_errors(l)
+            taus = tau.(Ref(l), errors)
+            seriestype := :line
+            xlabel --> "bin sizes"
+            ylabel --> "autocorrelation time"
+            markershape --> :circle
+            markercolor --> :blue
+            markersize --> 2
+            color --> :blue
+            legend --> false
+            bss, taus
         end
     else
         @series begin
@@ -41,6 +57,7 @@
             markercolor --> :grey
             markersize --> 2
             color --> :grey
+            legend --> true
             l.x
         end
     end
@@ -53,7 +70,7 @@
             label --> "mean"
             fill(μ, length(l))
         end
-    elseif plottype == :binning
+    elseif plottype in (:binning, :corrplot)
         nothing
     else
         @series begin
@@ -65,7 +82,7 @@
     end
 
     Δ = std_error(l)
-    if plottype != :binning
+    if !(plottype in (:binning, :corrplot))
         for i in (1, -1)
             @series begin
                 seriestype := (plottype == :histogram ? :vline : :hline)
@@ -78,3 +95,4 @@
 end
 
 @shorthands binning
+@shorthands corrplot
