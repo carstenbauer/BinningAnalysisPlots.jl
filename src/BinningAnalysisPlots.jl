@@ -1,6 +1,6 @@
 module BinningAnalysisPlots
 
-using BinningAnalysis, RecipesBase
+using BinningAnalysis, RecipesBase, StatsBase
 
 include("recipes.jl")
 
