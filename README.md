@@ -1,6 +1,8 @@
 # BinningAnalysisPlots.jl
 
-Plotting recipes for [BinningAnalysis.jl](http://github.com/crstnbr/BinningAnalysis.jl)
+Plotting recipes for [BinningAnalysis.jl](http://github.com/crstnbr/BinningAnalysis.jl).
+
+This package is very lightweight. Apart from BinningAnalysis.jl, it only depends on RecipesBase.jl, which has **zero** dependencies itself.
 
 Supported series types
 
