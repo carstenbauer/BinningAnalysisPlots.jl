@@ -1,6 +1,6 @@
 # BinningAnalysisPlots.jl
 
-Plotting recipes for BinningAnalysis.jl
+Plotting recipes for [BinningAnalysis.jl](http://github.com/crstnbr/BinningAnalysis.jl)
 
 Supported series types
 
